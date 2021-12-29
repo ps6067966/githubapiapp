@@ -14,19 +14,20 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<GitHubModel?>? gitHubModelList = [];
   @override
-  void initState()  {
+  void initState() {
     super.initState();
-      _getGithubData();  
+    _getGithubData();
   }
 
   Future<List<GitHubModel>?>? _getGithubData() async {
     await ApiServices.getAllGithub();
-    gitHubModelList = MySharedPrefrences.getGitHubData();
+    setState(() {
+      gitHubModelList = MySharedPrefrences.getGitHubData();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    gitHubModelList = MySharedPrefrences.getGitHubData();
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
