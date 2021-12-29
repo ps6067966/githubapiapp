@@ -14,11 +14,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<GitHubModel?>? gitHubModelList = [];
   @override
-  void initState() {
+  void initState()  {
     super.initState();
-    Future.delayed(Duration.zero, () {
-      _getGithubData();
-    });
+      _getGithubData();  
   }
 
   Future<List<GitHubModel>?>? _getGithubData() async {
@@ -28,6 +26,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    gitHubModelList = MySharedPrefrences.getGitHubData();
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
